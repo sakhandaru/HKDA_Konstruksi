@@ -1,80 +1,89 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Container } from "@/components/layout/container";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react"; // Menggunakan icon yang lebih mirip (panah miring)
 import { motion } from "framer-motion";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[85vh] items-center overflow-hidden bg-background pt-20 pb-16 md:pt-32 md:pb-24">
-      {/* Dark background for Hero specifically */}
-      <div className="absolute inset-0 bg-[#0f1115] z-0" />
+    <section className="relative min-h-[90vh] w-full overflow-hidden bg-[#0a0a0a]">
+      {/* Background Grid Pattern (Sisi Kiri) */}
+      <div 
+        className="absolute inset-0 z-0 opacity-20" 
+        style={{ 
+          backgroundImage: `linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px)`,
+          backgroundSize: '40px 40px' 
+        }} 
+      />
 
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-[#0f1115] to-[#0f1115] z-0 opacity-50" />
-
-      {/* Grid Pattern or Texture could go here */}
-
-      <Container className="relative z-10 grid gap-12 lg:grid-cols-2 lg:gap-8 items-center">
-        <div className="flex flex-col items-start text-left">
+      <div className="relative z-10 flex flex-col lg:flex-row min-h-[90vh]">
+        {/* SISI KIRI: Konten Teks */}
+        <div className="flex w-full flex-col justify-center px-6 py-20 lg:w-[45%] lg:pl-16 xl:pl-24">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            <h1 className="mb-6 text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1]">
-              Transforming <br />
-              Ideas into{" "}
-              <span className="text-primary">Stunning Structures</span>
+            <h1 className="text-5xl font-bold leading-[1.1] tracking-tight text-white sm:text-6xl lg:text-7xl">
+              Hallo <br />
+              Ideas into <span className="block">Stunning</span>
+              Structures
             </h1>
-            <p className="mb-8 max-w-[600px] text-lg text-gray-400 md:text-xl leading-relaxed">
-              We build more than just walls; we build dreams. HKDA Konstruksi
-              delivers premier construction solutions tailored to your vision.
+            
+            <p className="mt-8 max-w-lg text-lg leading-relaxed text-gray-400">
+              From concept to completion, we deliver quality construction 
+              services for homes, businesses, and communities.
             </p>
-          </motion.div>
 
-          <motion.div
-            className="flex flex-col gap-4 sm:flex-row"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <Button
-              asChild
-              size="lg"
-              className="h-14 px-8 text-base bg-white text-black hover:bg-gray-200 border-none"
-            >
-              <Link href="/projects">
-                View Projects
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              className="h-14 px-8 text-base bg-primary text-white hover:bg-primary/90 border-none"
-            >
-              <Link href="/contact">Get a Quote</Link>
-            </Button>
+            <div className="mt-10 flex flex-wrap gap-4">
+              {/* Tombol Putih */}
+              <Button
+                asChild
+                className="h-14 rounded-md bg-white px-8 text-base font-semibold text-black hover:bg-gray-200"
+              >
+                <Link href="/projects" className="flex items-center">
+                  Explore Our Projects
+                  <ArrowUpRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+
+              {/* Tombol Merah */}
+              <Button
+                asChild
+                className="h-14 rounded-md bg-[#b22212] px-8 text-base font-semibold text-white hover:bg-[#8e1b0e]"
+              >
+                <Link href="/contact" className="flex items-center">
+                  Get a free quote
+                  <ArrowUpRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+            </div>
           </motion.div>
         </div>
 
-        {/* Right side image placeholder - Ideally this would be an actual image from the user */}
-        <motion.div
-          className="relative aspect-square md:aspect-video lg:aspect-square overflow-hidden rounded-xl bg-muted/10 ring-1 ring-white/10"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          <div className="absolute inset-0 bg-linear-to-tr from-primary/20 to-transparent" />
-          <div className="absolute inset-0 flex items-center justify-center text-gray-700">
-            {/* Placeholder for Hero Image */}
-            <span className="text-muted-foreground">Hero Image Placement</span>
-          </div>
-        </motion.div>
-      </Container>
+        {/* SISI KANAN: Gambar dengan Pemisah Miring */}
+        <div className="relative w-full lg:w-[55%] min-h-[400px] lg:min-h-full">
+          <motion.div 
+            className="absolute inset-0 h-full w-full overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            style={{
+              // Efek miring menggunakan clip-path
+              clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0% 100%)",
+            }}
+          >
+            <img
+              src="/hero.jpeg" // Pastikan path gambar benar
+              alt="Construction site"
+              className="h-full w-full object-cover"
+            />
+            {/* Overlay tipis agar menyatu dengan nuansa gelap */}
+            <div className="absolute inset-0 bg-black/10" />
+          </motion.div>
+        </div>
+      </div>
     </section>
   );
 }
