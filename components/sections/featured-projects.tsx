@@ -12,26 +12,34 @@ export function FeaturedProjects() {
   const featured = projects.slice(0, 3);
 
   return (
-    <section className="py-16 md:py-24 bg-muted/30">
+    <section className="bg-[#0f1115] py-24 text-white">
       <Container>
-        <div className="mb-12 flex items-end justify-between">
-          <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
-              Featured Projects
+        <div className="mb-16 flex items-end justify-between">
+          <div className="space-y-4">
+            <span className="text-sm font-bold uppercase tracking-wider text-primary">
+              Our Portfolio
+            </span>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+              Building Excellence: <br /> One Project At a Time
             </h2>
-            <p className="text-muted-foreground">
-              Highlights from our recent work.
+            <p className="max-w-[600px] text-lg text-gray-400">
+              We take pride in every structure we build. Here are some of our
+              recent highlights.
             </p>
           </div>
-          <Button asChild variant="ghost" className="hidden sm:inline-flex">
+          <Button
+            asChild
+            variant="outline"
+            className="hidden border-white/20 bg-transparent text-white hover:bg-white hover:text-black sm:inline-flex"
+          >
             <Link href="/projects">
-              View All
+              View All Projects
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {featured.map((project, index) => (
             <motion.div
               key={project.slug}
@@ -42,16 +50,17 @@ export function FeaturedProjects() {
             >
               <Link
                 href={`/projects/${project.slug}`}
-                className="group block space-y-3"
+                className="group block space-y-4"
               >
-                <div className="overflow-hidden rounded-lg">
-                  <div className="aspect-video w-full bg-muted object-cover transition-transform duration-300 group-hover:scale-105" />
+                <div className="overflow-hidden rounded-xl border border-white/10 bg-white/5">
+                  <div className="aspect-video w-full bg-muted object-cover transition-transform duration-500 group-hover:scale-110" />
+                  {/* Ideally, we would use <Image /> here with project.images[0] */}
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold group-hover:underline decoration-primary decoration-2 underline-offset-4">
+                  <h3 className="text-xl font-bold text-white transition-colors group-hover:text-primary">
                     {project.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-gray-400">
                     {project.category} • {project.location}
                   </p>
                 </div>
@@ -60,8 +69,12 @@ export function FeaturedProjects() {
           ))}
         </div>
 
-        <div className="mt-8 text-center sm:hidden">
-          <Button asChild variant="ghost">
+        <div className="mt-12 text-center sm:hidden">
+          <Button
+            asChild
+            variant="outline"
+            className="w-full border-white/20 bg-transparent text-white hover:bg-white hover:text-black"
+          >
             <Link href="/projects">View All Projects</Link>
           </Button>
         </div>

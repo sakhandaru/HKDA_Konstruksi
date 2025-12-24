@@ -1,6 +1,7 @@
 import { Container } from "@/components/layout/container";
 import { Metadata } from "next";
 import { services } from "@/data/services";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Our Services",
@@ -25,18 +26,21 @@ export default function ServicesPage() {
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <div
+              <Link
                 key={index}
-                className="rounded-lg border bg-card p-8 shadow-sm flex flex-col gap-4"
+                href={`/services/${service.slug}`}
+                className="group rounded-lg border bg-card p-8 shadow-sm flex flex-col gap-4 transition-all hover:border-primary hover:shadow-md"
               >
-                <div className="p-3 rounded-full bg-primary/10 text-primary w-fit">
+                <div className="p-3 rounded-full bg-primary/10 text-primary w-fit group-hover:bg-primary group-hover:text-white transition-colors">
                   <Icon className="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="mb-2 text-xl font-bold">{service.title}</h3>
+                  <h3 className="mb-2 text-xl font-bold group-hover:text-primary transition-colors">
+                    {service.title}
+                  </h3>
                   <p className="text-muted-foreground">{service.description}</p>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
