@@ -4,11 +4,11 @@ import { Button } from "../ui/button";
 import { Menu } from "lucide-react";
 
 const NAV_LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/projects", label: "Projects" },
-  { href: "/services", label: "Services" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "/", label: "Beranda" },
+  { href: "/projects", label: "Proyek" },
+  { href: "/services", label: "Layanan" },
+  { href: "/about", label: "Tentang Kami" },
+  { href: "/contact", label: "Kontak" },
 ];
 
 export function Header() {

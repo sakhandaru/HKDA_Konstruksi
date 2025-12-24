@@ -1,6 +1,6 @@
 export const company = {
   name: "HKDA Konstruksi",
-  description: "Premier construction and architecture firm serving Indonesia.",
+  description: "Firma konstruksi dan arsitektur terkemuka yang melayani Indonesia.",
   address: {
     street: "Jl. Sudirman No. 123",
     city: "Jakarta Selatan",

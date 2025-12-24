@@ -7,6 +7,7 @@ export interface Service {
   details: string; // Markdown or long text for the individual page
   features?: string[];
   icon: any; 
+  image: string;
 }
 
 export const services: Service[] = [
@@ -25,6 +26,7 @@ We specialize in:
 With years of experience, we guarantee that your project will be completed on time, within budget, and to the highest standards of safety and workmanship.`,
     features: ["Project Planning", "Site Management", "Quality Control", "Safety Compliance"],
     icon: HardHat,
+    image: "/hero.jpeg",
   },
   {
     title: "Renovation & Remodeling",
@@ -41,6 +43,7 @@ Our process involves:
 We work closely with you to minimize disruption during the renovation process while maximizing the value and appeal of your property.`,
     features: ["Interior Design", "Structural Reinforcement", "Utility Upgrades", "Space Optimization"],
     icon: PaintBucket,
+    image: "/hero.jpeg",
   },
   {
     title: "Architectural Planning",
@@ -58,6 +61,7 @@ Services include:
 We ensure that every design is optimized for cost-efficiency without compromising on style or structural integrity.`,
     features: ["3D Visualization", "Blueprint Creation", "Structural Engineering", "Permit Assistance"],
     icon: Ruler,
+    image: "/hero.jpeg",
   },
   {
     title: "Consultation & Estimation",
@@ -74,6 +78,7 @@ We provide:
 Our goal is to help you avoid costly mistakes and ensure that your project is viable from the start.`,
     features: ["Cost Analysis", "Feasibility Studies", "Material Consulting", "Timeline Planning"],
     icon: Users,
+    image: "/hero.jpeg",
   },
   {
     title: "Commercial Build",
@@ -90,6 +95,7 @@ We build:
 We focus on durability, functionality, and creating spaces that enhance your business operations and brand image.`,
     features: ["Office Complexes", "Retail Spaces", "Industrial Facilities", "Hotels & Restaurants"],
     icon: Building2,
+    image: "/hero.jpeg",
   },
   {
     title: "Residential Development",
@@ -106,5 +112,6 @@ What we offer:
 We prioritize craftsmanship and attention to detail to create homes that are as durable as they are beautiful.`,
     features: ["Custom Homes", "Housing Complexes", "Sustainable Building", "Smart Home Ready"],
     icon: Home,
+    image: "/hero.jpeg",
   },
 ];

@@ -17,14 +17,14 @@ export function FeaturedProjects() {
         <div className="mb-16 flex items-end justify-between">
           <div className="space-y-4">
             <span className="text-sm font-bold uppercase tracking-wider text-primary">
-              Our Portfolio
+              Portofolio Kami
             </span>
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-              Building Excellence: <br /> One Project At a Time
+              Membangun Keunggulan: <br /> Satu Proyek Setiap Waktu
             </h2>
             <p className="max-w-[600px] text-lg text-gray-400">
-              We take pride in every structure we build. Here are some of our
-              recent highlights.
+              Kami bangga dengan setiap struktur yang kami bangun. Berikut
+              adalah beberapa sorotan terbaru kami.
             </p>
           </div>
           <Button
@@ -33,7 +33,7 @@ export function FeaturedProjects() {
             className="hidden border-white/20 bg-transparent text-white hover:bg-white hover:text-black sm:inline-flex"
           >
             <Link href="/projects">
-              View All Projects
+              Lihat Semua Proyek
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
@@ -75,7 +75,7 @@ export function FeaturedProjects() {
             variant="outline"
             className="w-full border-white/20 bg-transparent text-white hover:bg-white hover:text-black"
           >
-            <Link href="/projects">View All Projects</Link>
+            <Link href="/projects">Lihat Semua Proyek</Link>
           </Button>
         </div>
       </Container>

@@ -27,21 +27,22 @@ export function About() {
             </div>
             <div className="space-y-6 text-lg text-slate-600">
               <p>
-                Founded on the principles of integrity, innovation, and quality,
-                HKDA Konstruksi has grown from a small passionate team into a
-                leading construction firm. We don't just build structures; we
-                create environments that inspire.
+                Didirikan atas prinsip integritas, inovasi, dan kualitas, HKDA
+                Konstruksi telah berkembang dari tim kecil yang penuh semangat
+                menjadi perusahaan konstruksi terkemuka. Kami tidak hanya
+                membangun struktur; kami menciptakan lingkungan yang
+                menginspirasi.
               </p>
               <p>
-                We believe that every project is a unique opportunity to
-                demonstrate our commitment to excellence. From the initial
-                blueprint to the final finishing touch, our team works
-                tirelessly to ensure your vision is realized with precision.
+                Kami percaya bahwa setiap proyek adalah kesempatan unik untuk
+                menunjukkan komitmen kami terhadap keunggulan. Dari rancangan
+                awal hingga sentuhan akhir, tim kami bekerja tanpa lelah untuk
+                memastikan visi Anda terwujud dengan presisi.
               </p>
               <p>
-                Whether it&apos;s a commercial complex or a bespoke residential
-                home, we bring the same level of dedication and expertise to
-                every job site.
+                Baik itu kompleks komersial maupun rumah tinggal pribadi, kami
+                membawa tingkat dedikasi dan keahlian yang sama ke setiap lokasi
+                proyek.
               </p>
             </div>
             <div className="mt-8">
@@ -59,18 +60,18 @@ export function About() {
           </motion.div>
 
           <motion.div
-            className="relative aspect-4/3 overflow-hidden rounded-2xl bg-slate-100"
+            className="relative aspect-4/3 overflow-hidden  bg-slate-100"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             {/* Placeholder for About Image - Blueprint or Construction Site */}
-            <div className="absolute inset-0 bg-slate-200 flex items-center justify-center">
-              <span className="text-slate-400 font-medium">
-                About Image Placeholder
-              </span>
-            </div>
+            <img
+              src="/hero.jpeg" // Pastikan path gambar benar
+              alt="Construction site"
+              className="h-full w-full object-cover"
+            />
           </motion.div>
         </div>
       </Container>
