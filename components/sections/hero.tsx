@@ -2,86 +2,126 @@
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react"; // Menggunakan icon yang lebih mirip (panah miring)
+import { ArrowDownRight, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] w-full overflow-hidden bg-[#0a0a0a]">
-      {/* Background Grid Pattern (Sisi Kiri) */}
+    <section className="relative w-full min-h-screen bg-[var(--background)] flex flex-col lg:flex-row overflow-hidden border-b border-[var(--border)]">
+      {/* Decorative Grid Background for the whole section (subtle) */}
       <div
-        className="absolute inset-0 z-0 opacity-20"
+        className="absolute inset-0 pointer-events-none opacity-[0.03]"
         style={{
-          backgroundImage: `linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px)`,
-          backgroundSize: "40px 40px",
+          backgroundImage: `linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)`,
+          backgroundSize: "60px 60px",
         }}
       />
 
-      <div className="relative z-10 flex flex-col lg:flex-row min-h-[90vh]">
-        {/* SISI KIRI: Konten Teks */}
-        <div className="flex w-full flex-col justify-center px-6 py-20 lg:w-[45%] lg:pl-16 xl:pl-24">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-5xl font-bold leading-[1.1] tracking-tight text-white sm:text-6xl lg:text-7xl">
-              Mengubah <br />
-              Ide Menjadi <span className="block">Struktur</span>
-              Memukau
-            </h1>
+      {/* LEFT COLUMN: The Desk (Content) */}
+      <div className="relative w-full lg:w-[65%] pt-32 pb-20 px-6 lg:pl-20 xl:pl-24 flex flex-col justify-center z-10">
+        {/* Top Marker */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="absolute top-0 left-0 lg:left-20 w-32 h-2 bg-[var(--signal)]"
+        />
 
-            <p className="mt-8 max-w-lg text-lg leading-relaxed text-gray-400">
-              Dari konsep hingga penyelesaian, kami memberikan layanan
-              konstruksi berkualitas untuk rumah, bisnis, dan komunitas.
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <div className="flex items-center gap-3 mb-8">
+            <span className="h-[1px] w-12 bg-[var(--signal)]"></span>
+            <p className="font-mono text-sm tracking-[0.2em] text-[var(--muted-foreground)] uppercase">
+              Est. 2024 // Const. Eng.
             </p>
+          </div>
 
-            <div className="mt-10 flex flex-wrap gap-4">
-              {/* Tombol Putih */}
-              <Button
-                asChild
-                className="h-14 rounded-md bg-white px-8 text-base font-semibold text-black hover:bg-gray-200"
-              >
-                <Link href="/projects" className="flex items-center">
-                  Lihat Proyek Kami
-                  <ArrowUpRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
+          <h1 className="text-6xl sm:text-7xl lg:text-9xl font-black text-[var(--foreground)] leading-[0.9] tracking-tighter uppercase mb-8">
+            Structure
+            <span className="text-[var(--structure-light)]">.</span>
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--structure)] to-[var(--muted-foreground)]">
+              Precision
+            </span>
+            <span className="text-[var(--signal)]">.</span>
+          </h1>
 
-              {/* Tombol Merah */}
-              <Button
-                asChild
-                className="h-14 rounded-md bg-[#b22212] px-8 text-base font-semibold text-white hover:bg-[#8e1b0e]"
-              >
-                <Link href="/contact" className="flex items-center">
-                  Dapatkan Penawaran
-                  <ArrowUpRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-            </div>
-          </motion.div>
+          <p className="max-w-xl text-lg lg:text-xl text-[var(--muted-foreground)] leading-relaxed border-l-2 border-[var(--border)] pl-6">
+            Architecting the future through calculated engineering and robust
+            construction. We do not just build; we define space.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mt-16 flex flex-wrap items-center gap-8"
+        >
+          <Button
+            asChild
+            className="h-16 px-10 rounded-none bg-[var(--structure)] text-white hover:bg-[var(--structure-light)] text-lg font-bold tracking-wider"
+          >
+            <Link href="/projects" className="flex items-center gap-3">
+              VIEW BLUEPRINTS
+              <ArrowRight className="w-5 h-5 text-[var(--signal)]" />
+            </Link>
+          </Button>
+
+          <Link
+            href="/contact"
+            className="group flex items-center gap-3 font-mono text-sm tracking-widest hover:text-[var(--signal)] transition-colors"
+          >
+            <span className="border-b border-black group-hover:border-[var(--signal)] pb-1">
+              REQUEST CONSULTATION
+            </span>
+            <ArrowDownRight className="w-4 h-4" />
+          </Link>
+        </motion.div>
+      </div>
+
+      {/* RIGHT COLUMN: The Structure (Visual) */}
+      <div className="relative w-full lg:w-[35%] min-h-[50vh] lg:min-h-auto bg-[var(--structure)] flex flex-col border-l border-[var(--border)]">
+        {/* Image Layer with Technical Overlay */}
+        <div className="relative flex-grow overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+          <img
+            src="/hero.jpeg"
+            alt="Construction Detail"
+            className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay"
+          />
+
+          {/* Technical Grid Overlay */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:30px_30px]" />
+
+          {/* Crosshair Decor */}
+          <div className="absolute top-10 right-10 w-8 h-8 border border-white/20 flex items-center justify-center">
+            <div className="w-[1px] h-full bg-white/20" />
+            <div className="h-[1px] w-full bg-white/20 absolute" />
+          </div>
         </div>
 
-        {/* SISI KANAN: Gambar dengan Pemisah Miring */}
-        <div className="relative w-full lg:w-[55%] min-h-[400px] lg:min-h-full">
-          <motion.div
-            className="absolute inset-0 h-full w-full overflow-hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            style={{
-              // Efek miring menggunakan clip-path
-              clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0% 100%)",
-            }}
-          >
-            <img
-              src="/hero.jpeg" // Pastikan path gambar benar
-              alt="Construction site"
-              className="h-full w-full object-cover"
-            />
-            {/* Overlay tipis agar menyatu dengan nuansa gelap */}
-            <div className="absolute inset-0 bg-black/10" />
-          </motion.div>
+        {/* Bottom Technical Data Block */}
+        <div className="p-8 border-t border-white/10 bg-[var(--structure-light)]">
+          <div className="grid grid-cols-2 gap-4 font-mono text-xs text-white/60">
+            <div>
+              <span className="block text-white/30">CLIENTS</span>
+              <span className="text-xl text-white block mt-1">150+</span>
+            </div>
+            <div>
+              <span className="block text-white/30">PROJECTS</span>
+              <span className="text-xl text-white block mt-1">42</span>
+            </div>
+            <div className="col-span-2 pt-4 border-t border-white/10">
+              <span className="block text-white/30">CURRENT STATUS</span>
+              <div className="flex items-center gap-2 mt-2">
+                <span className="w-2 h-2 rounded-full bg-[var(--signal)] animate-pulse" />
+                <span className="text-white tracking-wider">OPERATIONAL</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

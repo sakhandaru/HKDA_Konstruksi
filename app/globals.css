@@ -19,22 +19,33 @@
 
 @layer base {
   :root {
-    --background: #ffffff;
-    --foreground: #0f1115;
-    --primary: #d93f0b;
-    --primary-foreground: #fafafa;
-    --secondary: #f4f4f5;
-    --secondary-foreground: #0f1115;
-    --muted: #f4f4f5;
+    --background: #f8fafc; /* Concrete Light */
+    --foreground: #0f172a; /* Structure Dark */
+    
+    /* Structure Colors (Blue/Navy) */
+    --structure: #0f172a;
+    --structure-foreground: #f8fafc;
+    --structure-light: #1e293b;
+    
+    /* Signal Colors (Red) */
+    --signal: #dc2626; /* Strong Engineering Red */
+    --signal-foreground: #ffffff;
+    
+    /* Standard Mappings */
+    --primary: var(--structure);
+    --primary-foreground: var(--structure-foreground);
+    --secondary: #e2e8f0; /* Concrete Medium */
+    --secondary-foreground: #0f172a;
+    --muted: #f1f5f9;
     --muted-foreground: #64748b;
-    --accent: #d93f0b;
-    --accent-foreground: #fafafa;
+    --accent: var(--signal);
+    --accent-foreground: var(--signal-foreground);
     --destructive: #ef4444;
     --destructive-foreground: #fafafa;
-    --border: #e2e8f0;
-    --input: #e2e8f0;
-    --ring: #d93f0b;
-    --radius: 0.5rem;
+    --border: #cbd5e1;
+    --input: #cbd5e1;
+    --ring: var(--structure);
+    --radius: 0rem; /* Squaring off for "Blueprint" feel */
   }
   .dark {
     --background: #0f1115;
