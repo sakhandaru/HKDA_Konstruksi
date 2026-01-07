@@ -26,7 +26,7 @@ We specialize in:
 With years of experience, we guarantee that your project will be completed on time, within budget, and to the highest standards of safety and workmanship.`,
     features: ["Project Planning", "Site Management", "Quality Control", "Safety Compliance"],
     icon: HardHat,
-    image: "/hero.jpeg",
+    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80", // Crane/Site
   },
   {
     title: "Renovation & Remodeling",
@@ -43,7 +43,7 @@ Our process involves:
 We work closely with you to minimize disruption during the renovation process while maximizing the value and appeal of your property.`,
     features: ["Interior Design", "Structural Reinforcement", "Utility Upgrades", "Space Optimization"],
     icon: PaintBucket,
-    image: "/hero.jpeg",
+    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80", // Renovation/Interior
   },
   {
     title: "Architectural Planning",
@@ -61,7 +61,7 @@ Services include:
 We ensure that every design is optimized for cost-efficiency without compromising on style or structural integrity.`,
     features: ["3D Visualization", "Blueprint Creation", "Structural Engineering", "Permit Assistance"],
     icon: Ruler,
-    image: "/hero.jpeg",
+    image: "https://images.unsplash.com/photo-1664575602554-2087b04935a5?auto=format&fit=crop&q=80", // Blueprints
   },
   {
     title: "Consultation & Estimation",
@@ -78,7 +78,7 @@ We provide:
 Our goal is to help you avoid costly mistakes and ensure that your project is viable from the start.`,
     features: ["Cost Analysis", "Feasibility Studies", "Material Consulting", "Timeline Planning"],
     icon: Users,
-    image: "/hero.jpeg",
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80", // Hard helm/Meeting
   },
   {
     title: "Commercial Build",
@@ -95,7 +95,7 @@ We build:
 We focus on durability, functionality, and creating spaces that enhance your business operations and brand image.`,
     features: ["Office Complexes", "Retail Spaces", "Industrial Facilities", "Hotels & Restaurants"],
     icon: Building2,
-    image: "/hero.jpeg",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80", // Commercial Glass
   },
   {
     title: "Residential Development",
@@ -112,6 +112,6 @@ What we offer:
 We prioritize craftsmanship and attention to detail to create homes that are as durable as they are beautiful.`,
     features: ["Custom Homes", "Housing Complexes", "Sustainable Building", "Smart Home Ready"],
     icon: Home,
-    image: "/hero.jpeg",
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80", // Modern Home
   },
 ];

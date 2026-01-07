@@ -5,23 +5,27 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { services } from "@/data/services";
 import { ArrowRight, Plus } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function ServicesPreview() {
+  const [hoveredService, setHoveredService] = useState(services[0]);
+
   return (
-    <section className="py-24 bg-[var(--background)]">
+    <section className="py-24 bg-(--background) relative overflow-hidden">
       <Container>
         {/* Header - Technical Style */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-[var(--border)] pb-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 border-b border-(--border) pb-6">
           <div className="max-w-2xl">
-            <h2 className="text-sm font-mono tracking-widest text-[var(--signal)] mb-2">
+            <h2 className="text-sm font-mono tracking-widest text-(--signal) mb-2">
               02. CAPABILITIES
             </h2>
-            <h3 className="text-4xl md:text-5xl font-black text-[var(--foreground)] uppercase tracking-tight">
+            <h3 className="text-4xl md:text-5xl font-black text-(--foreground) uppercase tracking-tight">
               Technical <br /> Operations
             </h3>
           </div>
           <div className="mt-6 md:mt-0">
-            <p className="text-right font-mono text-xs text-[var(--muted-foreground)]">
+            <p className="text-right font-mono text-xs text-(--muted-foreground)">
               FULL SCOPE ENGINEERING
               <br />
               AND CONSTRUCTION SERVICES
@@ -29,68 +33,118 @@ export function ServicesPreview() {
           </div>
         </div>
 
-        {/* The Technical Manual List */}
-        <div className="flex flex-col">
-          {services.map((service, index) => {
-            const Icon = service.icon;
-            // Pad index for "01", "02" style
-            const num = (index + 1).toString().padStart(2, "0");
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
+          {/* LEFT: The Technical Manual List */}
+          <div className="w-full lg:w-1/2 flex flex-col">
+            {services.map((service, index) => {
+              const Icon = service.icon;
+              const num = (index + 1).toString().padStart(2, "0");
+              const isHovered = hoveredService.slug === service.slug;
 
-            return (
-              <Link
-                key={service.slug}
-                href={`/services/${service.slug}`}
-                className="group relative flex flex-col md:flex-row items-center border-b border-[var(--border)] py-12 transition-all hover:bg-[var(--muted)]"
+              return (
+                <Link
+                  key={service.slug}
+                  href={`/services/${service.slug}`}
+                  onMouseEnter={() => setHoveredService(service)}
+                  className={`group relative flex items-center border-b border-(--border) py-8 transition-all hover:bg-(--muted) ${
+                    isHovered ? "bg-(--muted)/50" : ""
+                  }`}
+                >
+                  {/* Hover Indicator Line */}
+                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-(--signal) scale-y-0 group-hover:scale-y-100 transition-transform origin-top duration-300" />
+
+                  {/* Number */}
+                  <span className="pl-6 hidden md:block w-24 text-2xl font-black text-(--border) group-hover:text-(--foreground) transition-colors font-mono">
+                    {num}
+                  </span>
+
+                  {/* Icon & Title */}
+                  <div className="flex-1 w-full flex items-center gap-6">
+                    <div className="h-10 w-10 shrink-0 border border-(--border) flex items-center justify-center text-(--foreground) group-hover:border-(--signal) group-hover:text-(--signal) transition-colors">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold uppercase tracking-tight group-hover:translate-x-2 transition-transform duration-300">
+                        {service.title}
+                      </h4>
+                    </div>
+                  </div>
+
+                  {/* Action */}
+                  <div className="flex justify-end pr-4">
+                    <ArrowRight
+                      className={`w-5 h-5 transition-all duration-300 ${
+                        isHovered
+                          ? "rotate-0 text-(--signal)"
+                          : "-rotate-45 text-(--muted-foreground)"
+                      }`}
+                    />
+                  </div>
+                </Link>
+              );
+            })}
+
+            <div className="mt-12 flex justify-start">
+              <Button
+                asChild
+                variant="outline"
+                className="rounded-none border-(--foreground) text-(--foreground) hover:bg-(--foreground) hover:text-(--background) h-14 px-8 uppercase tracking-widest font-bold"
               >
-                {/* Hover Indicator Line */}
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-[var(--signal)] scale-y-0 group-hover:scale-y-100 transition-transform origin-top duration-300" />
+                <Link href="/services">
+                  <Plus className="w-4 h-4 mr-2" />
+                  View All Services
+                </Link>
+              </Button>
+            </div>
+          </div>
 
-                {/* Number */}
-                <span className="hidden md:block w-24 text-3xl font-black text-[var(--border)] group-hover:text-[var(--foreground)] transition-colors font-mono">
-                  {num}
+          {/* RIGHT: Visual Preview (Sticky) */}
+          <div className="hidden lg:block w-1/2 relative min-h-[600px]">
+            <div className="sticky top-24 w-full h-[600px] border border-(--border) bg-(--structure)">
+              {/* Technical Overlays */}
+              <div className="absolute top-4 left-4 z-20 flex gap-2">
+                <span className="bg-(--signal) text-white text-[10px] font-mono px-2 py-1 tracking-widest">
+                  VISUAL REF
                 </span>
+                <span className="bg-black/50 text-white text-[10px] font-mono px-2 py-1 tracking-widest backdrop-blur">
+                  IMG-{hoveredService.slug.toUpperCase().slice(0, 3)}
+                </span>
+              </div>
 
-                {/* Icon & Title */}
-                <div className="flex-1 w-full md:w-auto flex items-center gap-6">
-                  <div className="h-12 w-12 rounded-none border border-[var(--border)] flex items-center justify-center text-[var(--foreground)] group-hover:border-[var(--signal)] group-hover:text-[var(--signal)] transition-colors">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h4 className="text-2xl font-bold uppercase tracking-tight group-hover:translate-x-2 transition-transform duration-300">
-                      {service.title}
-                    </h4>
-                  </div>
-                </div>
+              {/* Crosshairs */}
+              {/* <div className="absolute top-0 right-0 w-8 h-8 border-l border-b border-white/20 z-20" />
+              <div className="absolute bottom-0 left-0 w-8 h-8 border-r border-t border-white/20 z-20" /> */}
 
-                {/* Description - Hidden on mobile or simplified */}
-                <div className="hidden lg:block w-1/3 pr-12">
-                  <p className="text-[var(--muted-foreground)] line-clamp-2 text-sm">
-                    {service.description}
-                  </p>
-                </div>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={hoveredService.image}
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="absolute inset-0"
+                >
+                  <img
+                    src={hoveredService.image}
+                    alt={hoveredService.title}
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Gradient for text readability */}
+                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+                </motion.div>
+              </AnimatePresence>
 
-                {/* Action */}
-                <div className="w-full md:w-auto mt-4 md:mt-0 flex justify-end">
-                  <div className="h-10 w-10 flex items-center justify-center bg-[var(--structure)] text-white group-hover:bg-[var(--signal)] transition-colors">
-                    <ArrowRight className="w-4 h-4 -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-
-        <div className="mt-12 flex justify-center">
-          <Button
-            asChild
-            variant="outline"
-            className="rounded-none border-[var(--foreground)] text-[var(--foreground)] hover:bg-[var(--foreground)] hover:text-[var(--background)] h-14 px-8 uppercase tracking-widest font-bold"
-          >
-            <Link href="/services">
-              <Plus className="w-4 h-4 mr-2" />
-              View All Services
-            </Link>
-          </Button>
+              <div className="absolute bottom-8 left-8 right-8 z-20">
+                <div className="h-px w-full bg-white/20 mb-4" />
+                <h5 className="text-white text-3xl font-black uppercase mb-2">
+                  {hoveredService.title}
+                </h5>
+                <p className="text-white/60 text-sm max-w-md">
+                  {hoveredService.description}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </Container>
     </section>

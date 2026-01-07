@@ -22,19 +22,19 @@
     --background: #f8fafc; /* Concrete Light */
     --foreground: #0f172a; /* Structure Dark */
     
-    /* Structure Colors (Blue/Navy) */
-    --structure: #0f172a;
+    /* Structure Colors (Blue/Navy) - Client Blue: #093FB4 */
+    --structure: #041030; /* Deep Midnight Blue (Client Blue mixed with Black) for Backgrounds */
     --structure-foreground: #f8fafc;
-    --structure-light: #1e293b;
+    --structure-light: #093fb4; /* Client Brand Blue for Highlights/surfaces */
     
-    /* Signal Colors (Red) */
-    --signal: #dc2626; /* Strong Engineering Red */
+    /* Signal Colors (Red) - Client Red: #FF0000 */
+    --signal: #ff0000; 
     --signal-foreground: #ffffff;
     
     /* Standard Mappings */
     --primary: var(--structure);
     --primary-foreground: var(--structure-foreground);
-    --secondary: #e2e8f0; /* Concrete Medium */
+    --secondary: #e2e8f0; 
     --secondary-foreground: #0f172a;
     --muted: #f1f5f9;
     --muted-foreground: #64748b;
@@ -44,8 +44,8 @@
     --destructive-foreground: #fafafa;
     --border: #cbd5e1;
     --input: #cbd5e1;
-    --ring: var(--structure);
-    --radius: 0rem; /* Squaring off for "Blueprint" feel */
+    --ring: var(--structure-light); /* Use Brand Blue for focus rings */
+    --radius: 0rem; 
   }
   .dark {
     --background: #0f1115;

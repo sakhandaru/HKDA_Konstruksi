@@ -1,7 +1,6 @@
 import { Container } from "@/components/layout/container";
-import { Button } from "@/components/ui/button";
 import { Metadata } from "next";
-import { company } from "@/data/company";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -10,73 +9,79 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <Container className="py-12 md:py-24">
-      <div className="mx-auto max-w-2xl space-y-8">
-        <div className="space-y-2 text-center">
-          <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-            Contact Us
+    <Container className="py-24 bg-(--background) min-h-[80vh]">
+      <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
+        {/* Left Column: Heading */}
+        <div className="lg:w-1/2">
+          <span className="text-sm font-mono font-bold uppercase tracking-widest text-(--signal)">
+            06. CONTACT BASE
+          </span>
+          <h1 className="mt-4 text-5xl md:text-7xl font-black uppercase tracking-tighter text-(--foreground) leading-[0.9]">
+            Let's <br /> Build <br />{" "}
+            <span className="text-(--structure-light)">Structure</span>.
           </h1>
-          <p className="text-muted-foreground text-lg">
-            Ready to start your project? Send us a message or give us a call.
+          <p className="mt-8 text-lg text-(--muted-foreground) max-w-md font-medium">
+            Ready to initiate your project? Connect with our engineering team
+            for a consultation.
           </p>
         </div>
 
-        <div className="rounded-lg border p-8 shadow-sm">
-          <form className="space-y-6">
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="space-y-2">
-                <label
-                  htmlFor="name"
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Name
-                </label>
-                <input
-                  id="name"
-                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                  placeholder="John Doe"
-                />
-              </div>
-              <div className="space-y-2">
-                <label
-                  htmlFor="email"
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                  placeholder="john@example.com"
-                />
-              </div>
+        {/* Right Column: Details */}
+        <div className="lg:w-1/2 flex flex-col justify-center space-y-12">
+          {/* Address */}
+          <div className="flex gap-6 group">
+            <div className="w-12 h-12 border border-(--border) flex items-center justify-center bg-white shrink-0 group-hover:border-(--signal) transition-colors">
+              <MapPin className="w-6 h-6 text-(--structure)" />
             </div>
-            <div className="space-y-2">
-              <label
-                htmlFor="message"
-                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            <div>
+              <h3 className="text-lg font-bold uppercase tracking-wide mb-2">
+                Headquarters
+              </h3>
+              <p className="text-(--muted-foreground) leading-relaxed">
+                Menara Karya, 28th Floor
+                <br />
+                Jl. H. R. Rasuna Said Blok X-5
+                <br />
+                Jakarta Selatan, 12950
+              </p>
+            </div>
+          </div>
+
+          {/* Phone */}
+          <div className="flex gap-6 group">
+            <div className="w-12 h-12 border border-(--border) flex items-center justify-center bg-white shrink-0 group-hover:border-(--signal) transition-colors">
+              <Phone className="w-6 h-6 text-(--structure)" />
+            </div>
+            <div>
+              <h3 className="text-lg font-bold uppercase tracking-wide mb-2">
+                Direct Line
+              </h3>
+              <p className="text-(--muted-foreground) leading-relaxed font-mono">
+                +62 21 5555 1234
+              </p>
+              <p className="text-xs text-(--muted-foreground) mt-1 uppercase tracking-wider">
+                Mon-Fri, 09:00 - 17:00
+              </p>
+            </div>
+          </div>
+
+          {/* Email */}
+          <div className="flex gap-6 group">
+            <div className="w-12 h-12 border border-(--border) flex items-center justify-center bg-white shrink-0 group-hover:border-(--signal) transition-colors">
+              <Mail className="w-6 h-6 text-(--structure)" />
+            </div>
+            <div>
+              <h3 className="text-lg font-bold uppercase tracking-wide mb-2">
+                Electronic Mail
+              </h3>
+              <a
+                href="mailto:info@hkda-konstruksi.com"
+                className="text-(--muted-foreground) hover:text-(--signal) transition-colors font-mono text-lg underline underline-offset-4"
               >
-                Message
-              </label>
-              <textarea
-                id="message"
-                className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                placeholder="Tell us about your project..."
-              ></textarea>
+                info@hkda-konstruksi.com
+              </a>
             </div>
-            <Button type="submit" className="w-full">
-              Send Message
-            </Button>
-          </form>
-        </div>
-
-        <div className="text-center text-muted-foreground">
-          <p>Email: {company.contact.email}</p>
-          <p>Phone: {company.contact.phone}</p>
-          <p>
-            Location: {company.address.street}, {company.address.city}
-          </p>
+          </div>
         </div>
       </div>
     </Container>

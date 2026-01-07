@@ -19,7 +19,7 @@ export default function Home() {
       <CTA />
       <FAQ />
       <Testimonials />
-      <ContactForm />
+      {/* <ContactForm /> */}
     </div>
   );
 }
