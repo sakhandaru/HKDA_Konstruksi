@@ -46,7 +46,6 @@ export function Stats() {
     <section className="bg-[#f8f9fa] py-20 lg:py-28">
       <Container>
         <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
-          
           {/* SISI KIRI: Angka Statistik (Dibalik ke kiri sesuai permintaan) */}
           <div className="order-2 lg:order-1 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-12">
             {stats.map((stat) => (
@@ -87,11 +86,12 @@ export function Stats() {
                 Satu Struktur Sekaligus
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-slate-600 max-w-xl">
-                Komitmen kami terhadap kualitas, keandalan, dan kepuasan klien 
-                tercermin dalam setiap hal yang kami lakukan. Berikut adalah 
-                sekilas dari apa yang telah kami capai sejauh ini dalam industri konstruksi.
+                Komitmen kami terhadap kualitas, keandalan, dan kepuasan klien
+                tercermin dalam setiap hal yang kami lakukan. Berikut adalah
+                sekilas dari apa yang telah kami capai sejauh ini dalam industri
+                konstruksi.
               </p>
-              
+
               <div className="mt-8">
                 <Button
                   asChild
@@ -102,7 +102,6 @@ export function Stats() {
               </div>
             </motion.div>
           </div>
-
         </div>
       </Container>
     </section>
